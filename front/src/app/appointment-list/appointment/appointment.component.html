@@ -1,0 +1,14 @@
+<div class="row">
+  {{ appointment.doctor.user.firstName }} {{ appointment.doctor.user.lastName }}
+  {{ appointment.doctor.category.name }}
+  {{ appointment.clinic.name }} {{appointment.date}} {{ appointment.approved }}
+  <hr>
+  <div class="row">
+    <button *ngIf="!appointment.approved && isDoctor" class="btn btn-primary col-1 offset-8"
+         (click)="approveAppointment(appointment.id)">Approve
+    </button>
+    <button class="btn btn-danger col-1 offset-8"
+         (click)="cancelAppointment(appointment.id)">Cancel
+    </button>
+  </div>
+</div>

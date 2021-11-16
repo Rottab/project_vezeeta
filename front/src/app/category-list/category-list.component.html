@@ -1,0 +1,11 @@
+<div class="row">
+  <h4>Select a category</h4>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card" *ngFor="let category of categoryList" (click)="onCategory(category.id)">
+        <img src="assets/imgs/undraw_exploring_re_grb8.svg" class="card-img-top" alt="...">
+        <div class="card-body">{{ category.name }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <h3>Appointment List</h3>
+  <div class="row">
+
+  </div>
+  <div class="row" *ngIf="appointmentList">
+    <div *ngFor="let appointment of appointmentList" class="card" style="margin: 5px;">
+      <div class="card-header">
+        {{ appointment.doctor.category.name}} Appointment at {{ appointment.clinic.name }} clinic | {{ appointment.approved }}
+      </div>
+      <div class="card-body">
+        <div class="card-body card-title">
+          <div class="div" *ngIf="!isDoctor">
+            {{ appointment.doctor.user.firstName}} {{ appointment.doctor.user.lastName}}
+          </div>
+          <div class="div" *ngIf="isDoctor">
+            {{ appointment.user.firstName}} {{ appointment.user.lastName}}
+          </div>
+        </div>
+        <div class="card-text text-end">
+          {{appointment.date | date: 'long'}}
+        </div>
+        <a (click)="onAppointment(appointment.id)" class="text-decoration-none">Learn More</a>
+        <div *ngIf="!appointment.approved && isDoctor" class="btn btn-primary float-end"
+             (click)="approveAppointment(appointment.id)">Approve
+        </div>
+        <div class="btn btn-danger float-end"
+             (click)="cancelAppointment(appointment.id)">Cancel
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!appointmentList">
+    <p> No appointments found for you </p>
+  </div>
+</div>

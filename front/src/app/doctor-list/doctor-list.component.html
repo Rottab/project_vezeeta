@@ -1,0 +1,8 @@
+<div class="row">
+  <h3>Available Doctors</h3>
+  <div class="card" style="margin: 5px" *ngFor="let doctor of doctorList" (click)="onDoctor(doctor.id)">
+    <div class="card-body">
+      {{ doctor.user.firstName }} {{ doctor.user.lastName }}
+    </div>
+  </div>
+</div>

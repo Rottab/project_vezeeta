@@ -1,0 +1,7 @@
+<h3>DOCTOR DETAILS</h3>
+<div class="row">
+  Speciality {{ doctor.category.name }}
+  <div class="row" *ngFor="let schedule of doctor.schedule">
+    {{ schedule.dayOfWeek }}, from {{ schedule.timeFrom }} to {{ schedule.timeTo }} at {{ schedule.clinic.name }} clinic
+  </div>
+</div>

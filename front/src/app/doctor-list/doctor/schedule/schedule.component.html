@@ -1,0 +1,7 @@
+<div class="row">
+  <h5>SCHEDULE</h5>
+  <div *ngFor="let schedule of scheduleList">
+    {{schedule.dayOfWeek}}, From: {{schedule.timeFrom}} To : {{schedule.timeTo}} at {{schedule.clinic.name}} clinic
+  </div>
+  <div class="btn btn-primary col-2 offset-10" (click)="onBookAppointment()">Book an Appointment</div>
+</div>

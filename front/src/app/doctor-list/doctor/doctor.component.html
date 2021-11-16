@@ -1,0 +1,9 @@
+<h3 class="row">
+  <!-- On init doctor is null until the fetch finishes  -->
+  Dr. {{ doctor.user.firstName }} {{ doctor.user.lastName }} specialist in {{ doctor.category.name}}
+</h3>
+<div class="row">
+  <div class="col xs-4">
+    <app-schedule [scheduleList]="doctor.schedule" [doctorId]="doctor.id"></app-schedule>
+  </div>
+</div>

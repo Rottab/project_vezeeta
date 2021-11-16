@@ -1,0 +1,32 @@
+<h3>Book</h3>
+<div class="row">
+  <div class="row" *ngFor="let schedule of scheduleList">
+    {{schedule.dayOfWeek}}: From {{schedule.timeFrom}} To {{ schedule.timeTo}} @ {{schedule.clinic.name}}
+  </div>
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" class="form-control" formControlName="date">
+      <div *ngIf="bookForm.get('date')?.invalid && bookForm.get('date')?.touched">
+        <span *ngIf="bookForm.get('date')?.errors['INVALID_DAY']" class="text-danger">
+          Doctor isn't available in selected day; Check the schedule
+        </span>
+      </div>
+      <label for="time">Time</label>
+      <input type="time" id="time" name="time" class="form-control" formControlName="time">
+      <div *ngIf="bookForm.get('time')?.invalid && bookForm.get('time')?.touched">
+       <span *ngIf="bookForm.get('time')?.errors['NULL_DATE']" class="text-danger">
+          Enter a date first
+        </span>
+        <span *ngIf="bookForm.get('time')?.errors['INVALID_TIME']" class="text-danger">
+          Doctor isn't available in selected time; Check the schedule
+        </span>
+        <span *ngIf="bookForm.get('time')?.errors['TIME_CONFLICT']" class="text-danger">
+          Another appointment booked during that period; try different time
+        </span>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="bookForm.invalid || !bookForm.touched">Submit</button>
+  </form>
+</div>
